@@ -1,0 +1,22 @@
+pipeline { 
+agent any 
+environment { 
+DOCKER_IMAGE = " dockerhub-username/java-test-app:latest" 
+} 
+stages { 
+stage('Clone Repository') { 
+steps { 
+git branch: 'main', 
+url: 'https://github.com/yourrepositoryname/test-java-app.git' 
+} 
+} 
+stage('Build & Run Tests') { 
+steps { 
+bat 'mvn clean test' 
+} 
+post { 
+always { 
+junit 'target/surefire-reports/*.xml' 
+} 
+} 
+}
