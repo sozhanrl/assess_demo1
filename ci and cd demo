@@ -19,7 +19,7 @@ always {
 junit 'target/surefire-reports/*.xml' 
 } 
 } 
-}
+} 
 stage('Package Application') { 
 steps { 
 bat 'mvn package -DskipTests' 
@@ -50,4 +50,4 @@ bat 'kubectl apply -f deployment.yaml'
 } 
 } 
 } 
-}
+} 
